@@ -41,3 +41,11 @@ In addition, it includes form validation, external CSS styling, and an expandabl
    ```bash
    git clone https://github.com/yourusername/05-thirsty-123456.git
    cd 05-thirsty-123456
+
+## 🚀 How to Install and Run Locally
+
+### 1. Install Dependencies
+Make sure you have **Node.js** installed, then run:
+
+```bash
+npm install
