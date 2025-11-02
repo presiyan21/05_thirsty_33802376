@@ -44,16 +44,21 @@ In addition, it includes form validation, external CSS styling, and an expandabl
 
 ## 🚀 How to Install and Run Locally
 
-### 1. Install Dependencies
+### 2. Install Dependencies
 Make sure you have **Node.js** installed, then run:
 
 ```bash
 npm install
 ```
 
-### 2. Run the Server
+### 3. Run the Server
 Start the application by running:
 
 ```bash
 node index.js
 ```
+
+### 4. Open Your Browser
+Visit:
+
+👉 [http://localhost:8000](http://localhost:8000)
