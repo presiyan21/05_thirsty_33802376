@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Customer Survey - <%= shopName %></title>
+    <link rel="stylesheet" href="/styles.css" />
+
+    <!-- Simple client-side form validation -->
+    <script>
+      function validateSurvey(event) {
+        const first = document.querySelector('[name="first"]').value.trim();
+        const last = document.querySelector('[name="last"]').value.trim();
+        const email = document.querySelector('[name="email"]').value.trim();
+        const age = document.querySelector('[name="age"]').value.trim();
+        const categories = document.querySelectorAll('[name="drink_category"]:checked');
+        const errorBox = document.getElementById("errorBox");
+
+        // Validation patterns
+        const namePattern = /^[A-Za-z\s'-]+$/;
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        let errors = [];
+
+        // Basic client-side input checks
+        if (!namePattern.test(first)) errors.push("Invalid first name.");
+        if (!namePattern.test(last)) errors.push("Invalid last name.");
+        if (!emailPattern.test(email)) errors.push("Invalid email address.");
+        if (!age || isNaN(age) || age < 10 || age > 120) errors.push("Please enter a valid age (10–120).");
+        if (categories.length === 0) errors.push("Please select at least one drink category.");
+
+        // Display errors or allow submission
+        if (errors.length > 0) {
+          event.preventDefault();
+          errorBox.innerHTML = errors.join("<br>");
+          errorBox.style.display = "block";
+        } else {
+          errorBox.style.display = "none";
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <!-- Page header -->
+    <header>
+      <h1>Customer Survey</h1>
+    </header>
+
+    <!-- Survey form -->
+    <section class="form-card">
+      <form method="POST" action="/survey_result" onsubmit="validateSurvey(event)">
+        <!-- Error messages shown here -->
+        <div id="errorBox" class="error-box" style="display:none;"></div>
+
+        <!-- Basic user info -->
+        <label>First name:</label>
+        <input type="text" name="first" pattern="[A-Za-z\s'-]+" title="Letters only" required />
+
+        <label>Surname:</label>
+        <input type="text" name="last" pattern="[A-Za-z\s'-]+" title="Letters only" required />
+
+        <label>Email:</label>
+        <input type="email" name="email" required />
+
+        <label>How old are you?</label>
+        <input type="number" name="age" min="10" max="120" required />
+
+        <!-- Drink category checkboxes -->
+        <fieldset>
+          <legend>Which drinks categories do you consume?</legend>
+          <% for (let i = 0; i < productCategories.length; i++) { %>
+            <label>
+              <input type="checkbox" name="drink_category" value="<%= productCategories[i] %>" />
+              <%= productCategories[i] %>
+            </label><br />
+          <% } %>
+        </fieldset>
+
+        <!-- Optional student checkbox -->
+        <label>
+          <input type="checkbox" name="is_student" value="yes" />
+          Are you a student?
+        </label>
+
+        <button type="submit">Submit Survey</button>
+      </form>
+    </section>
+
+    <!-- Footer navigation -->
+    <footer>
+      <a href="/">Home</a> | <a href="/about">About</a>
+    </footer>
+  </body>
+</html>
+
+
+

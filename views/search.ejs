@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Search - <%= shopName %></title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Search <%= shopName %> Shop</h1>
+    </header>
+
+    <section class="form-card">
+      <form action="/search_result" method="GET">
+        <label for="search_box">Keyword:</label>
+        <input id="search_box" type="text" name="search_text" required />
+
+        <label for="category">Category:</label>
+        <input id="category" type="text" name="category" required />
+
+        <button type="submit">Search</button>
+      </form>
+    </section>
+
+    <footer>
+      <a href="/">Home</a> |
+      <a href="/about">About</a> |
+      <a href="/register">Register</a>
+    </footer>
+  </body>
+</html>
+
+

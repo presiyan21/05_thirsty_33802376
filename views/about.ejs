@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= shopName %> - About</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>About <%= shopName %></h1>
+    </header>
+
+    <section class="form-container">
+      <p>We sell the finest range of drinks around Goldsmiths University of London.</p>
+
+      <h2>Our Shop Locations</h2>
+      <ul>
+        <% shops.forEach(shop => { %>
+          <li>
+            <strong><%= shop.location %></strong><br />
+            Manager: <%= shop.manager %><br />
+            Address: <%= shop.address %>
+          </li>
+        <% }) %>
+      </ul>
+    </section>
+
+    <footer>
+      <a href="/">Home</a> |
+      <a href="/search">Search</a> |
+      <a href="/register">Register</a> |
+      <a href="/survey">Survey</a>
+    </footer>
+  </body>
+</html>
