@@ -49,3 +49,11 @@ Make sure you have **Node.js** installed, then run:
 
 ```bash
 npm install
+```
+
+### 2. Run the Server
+Start the application by running:
+
+```bash
+node index.js
+```
